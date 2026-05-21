@@ -1,0 +1,150 @@
+/* 基礎環境重設 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #ffffff; /* 純白底 */
+    color: #333333; /* 深灰近黑字體 */
+    line-height: 1.5;
+}
+
+/* 導覽列 */
+.site-header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.logo-img {
+    height: 35px;
+    width: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666666;
+    margin-left: 20px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #000000;
+    font-weight: 500;
+}
+
+/* 主容器 */
+.portfolio-container {
+    max-width: 1100px; /* 控制整體作品寬度，讓畫面適度留白 */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* 網格基礎設定 */
+.portfolio-grid {
+    display: grid;
+    gap: 30px; /* 圖片彼此之間的間距 */
+    margin-bottom: 40px;
+}
+
+/* 第一排、第三排：兩欄排版 */
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 第二排、第四排：四欄排版 */
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 單個作品卡片 */
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 內容全部居中 */
+    text-align: center; /* 文字全部置中 */
+}
+
+/* 圖片外框基礎設定：防止圖片變形、拉伸 */
+.image-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: #fafafa;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓圖片填滿格子的同時保持原比例不壓扁 */
+}
+
+/* --- 圖片比例控制（對應不同的作品形狀） --- */
+.ratio-wide { padding-top: 56.25%; }  /* 16:9 橫向大圖 */
+.ratio-tall { padding-top: 140%; }     /* 直式海報比例 */
+.ratio-square { padding-top: 100%; }   /* 1:1 正方形 */
+
+/* 文字區塊 */
+.item-info {
+    width: 100%;
+    padding: 0 5px;
+}
+
+.item-category {
+    font-size: 0.75rem;
+    color: #888888; /* 灰色小字 */
+    margin-bottom: 4px;
+}
+
+.item-title {
+    font-size: 0.85rem;
+    color: #333333;
+    font-weight: normal; /* 模仿圖片中沒有特別加粗的低調字體 */
+    word-break: break-all;
+}
+
+/* 分隔線樣式（淡淡的虛線） */
+.section-divider {
+    border: none;
+    border-top: 1px dashed #e0e0e0; /* 灰色虛線分隔 */
+    margin: 40px 0;
+}
+
+/* 頁尾 */
+.site-footer {
+    text-align: center;
+    padding: 40px;
+    color: #999999;
+    font-size: 0.8rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* 響應式：手機板自動變單欄，不會擠在一起 */
+@media (max-width: 768px) {
+    .grid-2, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-grid {
+        gap: 40px;
+    }
+}
